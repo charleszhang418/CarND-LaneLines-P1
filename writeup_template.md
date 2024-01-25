@@ -6,7 +6,6 @@ The goals / steps of this project are the following:
 
 
 [//]: # (Image References)
-
 [image_1]: ./writeup_1.jpg
 [image_2]: ./writeup_2.jpg
 [image_3]: ./writeup_3.jpg
