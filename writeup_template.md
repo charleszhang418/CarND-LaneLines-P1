@@ -23,30 +23,30 @@ My pipeline consisted of 6 steps.
 
 1. I thresholdded "white" and "yellow" after converting the original image to HSV with the threshold values
    for "white" and "yellow". Then I apply the "masks" to the origianl image (overlap them together)
-   This is the picture.
+   This is the picture. \
    ![image_1]
 
 2. I used grayscale and added gaussian smoothing to the grayscaled picture. I chose the kernal size with
    the processed image here and after canny edge detector. I finally chose 5 because it makes the most effective gussian filter for the following steps. Using guassian filter mainly help to do lane edge 
-   detection and help reduce some noice especially around the driving lane markings.
+   detection and help reduce some noice especially around the driving lane markings. \
    ![image_2]
 
 3. I applied canny edge detector to the image after guassian smoothing. The picture I got are those with
-   with edges which are not filtered out by color threholding.
+   with edges which are not filtered out by color threholding. \
    ![image_3]
 
 4. Then I added region of interest. My ROI is trapezoid made of four points in the graph, the points are 
-   [100, 540], [900, 540], [500, 320], [400, 320] and they are the area close to the "Driver's vision".
+   [100, 540], [900, 540], [500, 320], [400, 320] and they are the area close to the "Driver's vision". \
    ![image_4]
 
 5. I applied hough_lines here in which there are draw lines. The given draw_lines only draws the semgments
    thresholdded and within the region of interest. The improvement idea is mainly to do regression on points on all these lines. In draw_lines, I first classified the driving lane into left side and right side according to their slope. I also added a threshold after testing my initial idea because there's a picture in which the right lane drawn is a almost horizontal line. After adding a threshold to the "valid" driving lane detected by opencv, I got good lines classified. Then I did a linear regression on
    both lines and get best fit line. I applied the line with limit to y (I used 320 and 540 because they are
-   the borders of my ROI), then I drew the line with the calculated (x1, y1), (x2, y2)
+   the borders of my ROI), then I drew the line with the calculated (x1, y1), (x2, y2) \
    ![image_5]
 
 6. I applied addWeighted to the initial image and the image processed by the pipeline(which is simply two 
-   lines drew on a black board).
+   lines drew on a black board). \
    ![image_6]
 
 
